@@ -57,7 +57,9 @@ void InputManager::AssignEvent(SDL_EventType evt, InputEvent callback)
   auto mapItr = _eventMap.find(evt);
   if (mapItr == _eventMap.end())
   {
-    std::pair<SDL_EventType, std::vector<InputBlock *> > newPair(evt, std::vector<InputBlock *> { newBlock });
+	  std::vector<InputBlock *> block;
+	  block.push_back(newBlock);
+    std::pair<SDL_EventType, std::vector<InputBlock *> > newPair(evt, block);
     _eventMap.insert(newPair);
   }
   else
@@ -92,7 +94,9 @@ void InputManager::AssignEvent(SDL_EventType evt, void *target, InputMemberEvent
   auto mapItr = _memberEventMap.find(evt);
   if (mapItr == _memberEventMap.end())
   {
-    std::pair<SDL_EventType, std::vector<InputPair *> > newEntry(evt, std::vector<InputPair *> { newPair });
+	  std::vector<InputPair *> block;
+	  block.push_back(newPair);
+    std::pair<SDL_EventType, std::vector<InputPair *> > newEntry(evt, block);
     _memberEventMap.insert(newEntry);
   }
   else
