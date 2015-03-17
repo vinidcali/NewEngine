@@ -4,6 +4,7 @@
 
 union SDL_Event;
 class Graphics;
+class Shape;
 
 class Game: public GameEngine
 {
@@ -21,4 +22,6 @@ protected:
 
   void Reset();
   void CalculateDrawOrder(std::vector<GameObject *>& drawOrder);
+
+  Shape *shape;
 };

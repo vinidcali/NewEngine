@@ -3,6 +3,7 @@
 #include <SDL.h>
 #include <math.h>
 #include <SDL_image.h>
+#include "Shape.h"
 
 // Initializing our static member pointer.
 GameEngine* GameEngine::_instance = nullptr;
@@ -28,6 +29,9 @@ Game::~Game()
 void Game::InitializeImpl()
 {
   SDL_SetWindowTitle(_window, "Game");
+
+  shape = new Shape();
+  _objects.push_back(shape);
 
   for (auto itr = _objects.begin(); itr != _objects.end(); itr++)
   {
